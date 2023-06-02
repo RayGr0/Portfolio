@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>A-Frame Tour</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+      
+          <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+         <a-assets>
+         
+              <img id="vc" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameProject/thumbs/visitor-center-thumb.png">
+            <img id="sign" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameDemo/thumbs/sign.jpg">
+             
+             
+            <img id="mountain" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameDemo/mountain-fog.jpg">
+            <img id="battle" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameProject/battlegroundsupdated.jpg">
+
+
+            
+            <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+    </a-assets>
+
+      <a-sky id="image-360" src="#battle"> </a-sky>
+        
+         <!--Interactive text info sphere-->
+	   <a-entity
+                id="textArea"
+                position="-1.5 .5 -2"
+                scale=".4 .4 .4"
+                geometry="primitive: sphere; width: 4; height: auto"
+                material="color: #000; transparent: true; opacity: 0.20;"
+                text="anchor: center; baseline: center; wrapCount: 20;
+                        transparent: false; 
+                        color: #FFF;
+                        value: Look over here to learn about the battle ground"
+                event-set__enter="_event: mouseenter; _target: #planeText; visible: true; color: #FFF"
+                event-set__leave="_event: mouseleave; _target: #planeText; visible: false">
+        </a-entity>
+        
+        <!--Popup text after rollover-->
+        <a-text id="planeText" 
+                value="Situated among the towering trees and rocky terrain is a Civil War battleground. Near the end of the war, six days before Lee’s surrender at Appomattox, the Union and Confederacy exchanged bullets and cannon fire for five hours to see who would control Asheville. The city was desirable for its location. The Sons of Confederate Veterans have a piece of fortification from the battle in the gardens. On it, a plaque shows obvious signs of age, the metal oxidizing to a pale green.”" 
+                scale=".3 .3 .3"
+                xOffset="20"
+                align="center" 
+      
+          wrap-Count= "24"
+                color="#FFFFFF" 
+                visible="false" 
+                position="0 .5 -2"
+                geometry="primitive: plane; width: auto; height: auto;" 
+                material="color: #333">
+        </a-text>
+        
+        
+         <!--Clickable Thumbnail image--> 
+
+        
+        <a-entity 
+                  class="link" 
+                  geometry="primitive: plane; height: 1; width: 1" 
+                  sound="on: click; src: #click-sound" 
+                  material="shader: flat; src: #vc"
+                  position="0 -1 -2" 
+                  link="href: https://nm.unca.edu/~beidson/a-frame-botans/visitor-center.html"
+                  event-set__mouseenter="scale: 1.2 1.2 1"
+                  event-set__mouseleave="scale: 1 1 1">
+          </a-entity>
+
+        
+        <a-entity camera look-controls>
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__mouseenter="_event: mouseenter; color: springgreen"
+          event-set__mouseleave="_event: mouseleave; color: black"></a-cursor>
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>

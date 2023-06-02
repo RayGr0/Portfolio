@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>A-Frame Tour</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <!--Interactive text info sphere-->
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <img id="baileys" crossorigin="anonymous" src="https://nm.unca.edu/~rgross1/finalproject/images/entrance.jpg">
+      <img id="lounge" crossorigin="anonymous" src="https://nm.unca.edu/~vbradbur/A-FrameGalleryTest3/lounge.jpg">
+      <img id="cabin" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameProject/">
+      <img id="graveyard" crossorigin="anonymous"
+        src="https://nm.unca.edu/~rgross1/finalproject/images/thumbnails/graveyard.PNG">
+      <img id="secondthumb" crossorigin="anonymous" src="https://nm.unca.edu/~rgross1/aframeproject/thumbs/cabin.png">
+
+
+      <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+    </a-assets>
+
+    <a-sky id="baileys" src="#baileys" rotation="0 -100 0" material="" geometry="" scale=""> </a-sky>
+
+
+    <!--Clickable Thumbnail image-->
+    <a-entity class="link" geometry="primitive: plane; height: 1; width: 1" sound="on: click; src: #click-sound"
+      material="shader: flat; src: #graveyard" text="anchor: center; baseline: top; wrapCount: 10;
+                        transparent: false; 
+                        color: #FFF;
+                        value: Enter the graveyard" position="-2.403 1.87469 -1.02847" rotation="0 60.13 0"
+      link="href: https://nm.unca.edu/~rgross1/finalproject/baileygraves.html"
+      event-set__mouseenter=" _target: #thumbText; visible: true; color: white; scale: 1.2 1.2 1"
+      event-set__mouseleave=" _target: #thumbText; visible: false; scale: 1 1 1">
+    </a-entity>
+
+    <!--Interactive text info sphere-->
+    <a-entity id="textArea" position="2.60195 0.9397 -0.85832" rotation="0 -100 0" scale=".4 .4 .4" geometry="primitive: plane; width: 3; height: auto"
+      material="color: #333; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 10;
+                        transparent: false; 
+                        color: #FFF;
+                        value: Welcome to the historic South Asheville Cemetery"
+      event-set__enter="_event: mouseenter; _target: #planeText; visible: true; color: white"
+      event-set__leave="_event: mouseleave; _target: #planeText; visible: true">
+    </a-entity>
+
+    <!--Popup text after rollover-->
+    <a-text id="planeText"
+      value="The South Asheville Cemetery (SAC), with around 3,000 burial sites, is probably the oldest public African American cemetery in western North Carolina. This place has a long history for African Americans and their connection to Asheville."
+      scale=".3 .3 .3" xOffset="20" align="center" wrap-Count="17" color="#FFF" visible="false" position="3.4171 0.83653 0.96815" rotation="0 -115.49999999999999 0"
+      geometry="primitive: plane; width: auto; height: auto;" material="color: #333; transparent: true; opacity: 0.80;">
+    </a-text>
+    
+
+    <!--thumbnail popup text after rollover-->
+    <a-text id="thumbText" value="To the Battleground" scale=".3 .3 .3" xOffset="20" align="center" wrap-Count="17"
+      color="#FFF" visible="false" position="1.2 .4 -1.5" geometry="primitive: plane; width: auto; height: auto;"
+      material="color: #333">
+    </a-text>
+    <!--<a-entity id="textArea" position="1 .5 -2" scale=".7 .7 .7" geometry="primitive: plane; width: 3; height: auto" material="color: #fff; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 10;
+    transparent: true; opacity: 0.80;
+    color: #1F85DE;
+    value: Look Here for more info" event-set__enter="_event: mouseenter; _target: #planeText; visible: true; color: red" event-set__leave="_event: mouseleave; _target: #planeText; visible: false">
+
+<a-text id="planeText" scale=".3 .3 .3" xoffset="20" align="center" wrap-count="17" color="red" visible="false" position="0 -0.35 0.55" geometry="primitive: plane; width: auto; height: auto;" material="color: #333" text="The tree toward your left with the rock in front of it has traveled through space. In 1976 this sycamore was planted on Arbor Day as a gift to the Botanical Gardens from NASA. This sycamore as a seed traveled on the 1971 Apollo 14 journey to the moon.">
+</a-text>
+</a-entity>-->
+
+
+
+    <a-entity camera look-controls>
+      <a-cursor id="cursor"
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+        event-set__mouseenter="_event: mouseenter; color: springgreen"
+        event-set__mouseleave="_event: mouseleave; color: black"></a-cursor>
+    </a-entity>
+
+
+
+  </a-scene>
+</body>
+
+</html>

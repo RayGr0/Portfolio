@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ray Gross</title>
+  <link rel="stylesheet" href="css/newerstyle.css">
+</head>
+
+
+
+
+
+<section id="page">
+
+  <div id="header">
+    <div id="sectionchild">
+      Ray <img></div>
+  </div>
+  <div id="header"><img class="bug" src="mylogo.png">
+  </div>
+  <div id="header">
+    <div id="sectionchild">
+      Gross
+    </div>
+  </div>
+  <nav>
+    <p id="sectionside"  onclick="showhide()"><span class="bigtext">&gt;Contact</span></p>
+    <div id="contact" class="hidden">
+      <p><span class="highlight">My email: RayGross168@gmail.com <br>
+          My linkedin: <br>
+          My github: https://github.com/RayGr0</span>
+      </p>
+    </div>
+  </nav>
+  <main>
+    <p id="AboutMe"  onclick="ShowAboutMe()"><span class="bigtext">&gt;About Me</span></p>
+    <div id="content" class="hidden">
+      <p><span class="highlight">Hi my name is Ray Gross! I create graphics, websites, animations and video
+          art. I'm based in North Carolina, and I'm ready to bring my creativity and skill to new projects!</span></p>
+    </div>
+  </main>
+  <footer>
+    <div id="worksection">
+      <p>My Work:</p>
+      <p> <span id="plsfix" class="bigtext" onclick="ShowGraphics()"><br>&gt;Graphics</span> <span id="graphics" class="hidden"><br>
+          <img src="images/gross.png">
+          <br>
+          <img src="images/Ray_Gross_constructivist_poster.png">
+          <br>
+          <img src="images/harvest.png">
+          <br>
+          <img src="images/starspeaker.png">
+          <br>
+          <img src="images/pretty_cherries.gif">
+          <br>
+          <img src="images/Typology.jpg">
+          <br>
+          <img src="images/alanguagelearning.png">
+        </span>
+      
+         <br>
+        <span class="bigtext"> &gt;Videos <span> <br>
+          <video width="320" height="240" controls>
+            <source src="videos/logo_2.mp4" type="video/mp4">
+          
+          Your browser does not support the video tag.
+          </video> 
+        </span> <br> <span class="bigtext">&gt;Websites </span></p>
+
+    </div>
+
+  </footer>
+</section>
+
+
+
+
+<script>
+
+  // This is the show and hide section
+  //this shows the contact section
+  function showhide() {
+    var div = document.getElementById("contact");
+    div.classList.toggle('hidden');
+
+    var x = document.getElementById("sectionside");
+    if (x.innerHTML === "&gt;Contact") {
+      x.innerHTML = "&#8964;Contact";
+    } else {
+      x.innerHTML = "&gt;Contact";
+    }
+  }
+//This shows the about me
+  function ShowAboutMe() {
+    var x = document.getElementById("AboutMe");
+    if (x.innerHTML === "&gt;About Me") {
+      x.innerHTML = "&#8964;About Me";
+    } else {
+      x.innerHTML = "&gt;About Me";
+    }
+
+    var div = document.getElementById("content");
+    div.classList.toggle('hidden');
+
+
+
+  }
+  function ShowGraphics() {
+    var x = document.getElementById("plsfix");
+    if (x.innerHTML === "&gt;Graphics") {
+      x.innerHTML = "&#8964;Graphics";
+    } else {
+      x.innerHTML = "&gt;Graphics";
+    }
+
+    var div = document.getElementById("graphics");
+    div.classList.toggle('hidden');
+
+
+
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
