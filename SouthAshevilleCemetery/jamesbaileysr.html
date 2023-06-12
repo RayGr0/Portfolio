@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>A-Frame Tour</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+      
+          <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+         <a-assets>
+         
+            <img id="battleground" crossorigin="anonymous" src="https://nm.unca.edu/~rgross1/finalproject/images/thumbnails/jamesbaileysr.PNG">
+            <img id="battleground" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameDemo/thumbs/sign.jpg">
+            <img id="mountain" crossorigin="anonymous" src="https://nm.unca.edu/~ahollan3/A-FrameDemo/mountain-fog.jpg">
+            <img id="cabin" crossorigin="anonymous" src="https://cmykstudios.xyz/SouthAshevilleCemetery/images/jamesbsr.JPG">
+
+
+            
+            <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+    </a-assets>
+
+      <a-sky id="image-360" src="#cabin"> </a-sky>
+        
+
+      <a-entity 
+                  class="link" 
+                  geometry="primitive: plane; height: 1; width: 1" 
+                  sound="on: click; src: #click-sound" 
+                  material="shader: flat; src: #battleground"
+                  text="anchor: center; baseline: top; wrapCount: 20;
+             transparent: false; 
+             color: #FFF;
+             value: Exit the graveyard."
+                  position="0 1 -2" 
+                  link="href: https://cmykstudios.xyz/SouthAshevilleCemetery/index.html"
+                  event-set__mouseenter="scale: 1.2 1.2 1"
+                  event-set__mouseleave="scale: 1 1 1">
+          </a-entity>
+      
+
+        
+        <a-entity camera look-controls>
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__mouseenter="_event: mouseenter; color: springgreen"
+          event-set__mouseleave="_event: mouseleave; color: black"></a-cursor>
+      </a-entity>
+
+       <!--Interactive text info sphere-->
+	   <a-entity
+     id="textArea"
+     position="-2.0 1.5 .5"
+     scale=".4 .4 .4"
+     geometry="primitive: plane; width: 3; height: auto"
+     material="color: #000; transparent: true; opacity: 0.80;"
+     rotation="3.0 110.0 -0.34"
+     text="anchor: center; baseline: center; wrapCount: 20;
+             transparent: false; 
+             color: #FFF;
+             value: Look over here to learn about the graveyard."
+     event-set__enter="_event: mouseenter; _target: #planeText; visible: true; color: #FFF"
+     event-set__leave="_event: mouseleave; _target: #planeText; visible: true">
+</a-entity>
+
+<!--Popup text after rollover-->
+<a-text id="planeText"
+value="With no one maintaining the grounds, it was quickly covered by plant growth and was essentially out of sight and would be left forgotten to time, but not out of mind. In the 1980s, members of the St. John A Baptist Church community began restoration efforts on the property. Since then, there have been recurring cleanups and regular upkeep with the cemetery. Cleaning away foliage, replanting grass and plants, and a general watch over the area are just some of the work that goes into maintaining the cemetery. Thanks to the South Asheville Cemetery Association and amazing volunteers, the South Asheville Cemetery can always be looked after and will be treated with respect for all those who have been interred there. "
+scale=".3 .3 .3" position="-3.0 1.5 -1.5"
+rotation="0.0 70.0 -0.34" xOffset="20" align="center" wrap-Count="17" color="#FFF" visible="false" 
+geometry="primitive: plane; width: auto; height: auto;" material="color: #333; transparent: true; opacity: 0.80;">
+</a-text>
+<!--<a-text id="planeText" 
+     value="With no one maintaining the grounds, it was quickly covered by plant growth and was essentially out of sight and would be left forgotten to time, but not out of mind. In the 1980s, members of the St. John A Baptist Church community began restoration efforts on the property. Since then, there have been recurring cleanups and regular upkeep with the cemetery. Cleaning away foliage, replanting grass and plants, and a general watch over the area are just some of the work that goes into maintaining the cemetery. Thanks to the South Asheville Cemetery Association and amazing volunteers, the South Asheville Cemetery can always be looked after and will be treated with respect for all those who have been interred there. " 
+     wrap-Count= "24"
+     color="#FFFFFF" 
+     visible="false" 
+     position="-9.0 1.5 -1.5"
+     rotation="0.0 70.0 -0.34"
+     geometry="primitive: plane; width: auto; height: auto;" 
+     material="color: #E4E4E4; transparent: true; opacity: 0.00;">
+</a-text>
+-->
+    </a-scene>
+  </body>
+</html>
