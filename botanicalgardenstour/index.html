@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Botanical Gardens Tour</title>
+  </head>
+  <body>
+    <a-scene>
+        <a-assets>
+          <img id="moontree-thumb" crossorigin="anonymous" src="https://cmykstudios.xyz/botanicalgardenstour/thumbs/thumbnailmoontree.jpg">
+          <!--<img id="cabin-thumb" crossorigin="anonymous" src="https://nm.unca.edu/~beidson/a-frame-botans/thumbs/cabin-thumb.png">-->
+
+
+          <img id="visitor-center" crossorigin="anonymous" src="https://cmykstudios.xyz/botanicalgardenstour/images/visitor-center.jpg">
+          
+
+
+          <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        </a-assets>
+
+
+
+      <a-sky id="image-360" src="#visitor-center"></a-sky>
+
+      <a-entity 
+        class="link" 
+        geometry="primitive: plane; height: 1; width: 1" 
+        sound="on: click; src: #click-sound" 
+        material="shader: flat; src: #moontree-thumb"
+        position="0 -1 -4" 
+        link="href: https://cmykstudios.xyz/botanicalgardenstour/moontree.html"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1">
+    </a-entity>
+
+    <!--<a-entity 
+        class="link" 
+        geometry="primitive: plane; height: 1; width: 1" 
+        sound="on: click; src: #click-sound" 
+        material="shader: flat; src: #cabin-thumb"
+        position="0 -3 -6" 
+        link="href: visitor-center.html"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1">
+    </a-entity>-->
+
+      <a-entity camera look-controls>
+        <a-cursor
+          id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__mouseenter="_event: mouseenter; color: springgreen"
+          event-set__mouseleave="_event: mouseleave; color: black"></a-cursor>
+      </a-entity>
+
+    <!--Interactive text info sphere-->
+	   <a-entity
+      id="textArea"
+      position="1 .5 -2"
+      scale=".4 .4 .4"
+      geometry="primitive: sphere; width: 4; height: auto"
+      material="color: #000; transparent: true; opacity: 0.80;"
+      text="anchor: center; baseline: center; wrapCount: 20;
+             transparent: false; 
+             color: #FFF;
+             value: Look here to learn more about the Botanical Gardens"
+      event-set__enter="_event: mouseenter; _target: #planeText; visible: true; color: white"
+      event-set__leave="_event: mouseleave; _target: #planeText; visible: false">
+    </a-entity>
+
+    <a-entity
+    position="-5 1 -2"
+    scale="10 10 10"
+    rotation="45 90 0"
+    material="color: #000; transparent: true; opacity: 0.80; anchor: center; baseline: center; wrapCount: 20;
+    transparent: false;"
+    text="value: Welcome to the Botanical Gardens!; transparent: false; color: #FFFFFF">
+    </a-entity>
+    
+    <a-entity
+    position="-5 .5 -2"
+    scale="8 8 8"
+    rotation="45 90 0"
+    material="color: #000; transparent: true; opacity: 0.80; anchor: center; baseline: center; wrapCount: 20;
+    transparent: false;"
+    text="value: You are currently at the visitor center; transparent: false; color: #FFFFFF">
+    </a-entity>
+
+
+    <!--Popup text after rollover-->
+      <a-text id="planeText" 
+        value="By the end of 1964, volunteers had planted more than 5,000 plants. These volunteers went in groups to save plants from being cutdown for construction sites and also gathered some from private lands and national forests with a special permit." 
+        scale=".3 .3 .3"
+        xOffset="20"
+        align="center" 
+        wrap-Count= "17"
+        color="#FFF" 
+        visible="false" 
+        position="1.2 .4 -1.5"
+        geometry="primitive: plane; width: auto; height: auto;" 
+        material="color: #333">
+      </a-text>
+
+
+
+    </a-scene>
+  </body>
+</html>
+
