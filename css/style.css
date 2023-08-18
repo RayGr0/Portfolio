@@ -476,12 +476,13 @@ background-color:  black;
 		font-size: 30px;
 		margin-top:-500px;
 	}
+	.mySlides {
+		display: none;
+		max-width:30em;
+		max-height:30em
+	  }
 }
-.mySlides {
-	display: none;
-	max-width:30em;
-	max-height:30em
-  }
+
 
 @media only screen and ( max-width: 414px ) {
  	.scoopy {
